@@ -17,9 +17,6 @@ try:
             FIFO = json.load(ff)
             print("[INFO] Queue loaded correctly")
 
-except TypeError:
-    FIFO = []
-
 except:
     print("[ERR] creating a new queue file")
     with open('fifo.json', 'w') as ff:
@@ -27,7 +24,6 @@ except:
 
 
 def start(bot, update):
-    print(update.message.chat_id)
     update.message.reply_text('Hi!')
 
 
@@ -75,7 +71,6 @@ def save_link(bot, up):
         up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
 
     finally:
-        print(FIFO)
         up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
 
 
@@ -99,7 +94,6 @@ def main():
     updater.job_queue.run_daily(send_link, datetime.time(13, 30))
     updater.job_queue.run_daily(send_link, datetime.time(19, 30))
     updater.job_queue.run_daily(send_link, datetime.time(20, 30))
-    updater.job_queue.run_daily(send_link, datetime.time(12, 3))
 
     updater.start_polling()
     updater.idle()
