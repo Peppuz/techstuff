@@ -36,27 +36,20 @@ def send_link(bot, job):
         tree = fromstring(r.content)
         title = tree.findtext('.//title')
 
-        # title grabber with mechanize
-        """
-        br = mechanize.Browser()
-        br.open('http://www.imdb.com/title/tt0108778/')
-        title = br.title()
-        """
-
-
         # Formatting text
         text = "{} \n\n {}".format(title, link)
-        print(text)
-
         bot.send_message(channel_id, text=text)
         
         # Monitoring
-        #send_admin(bot, "Link postato, link in queue: %s" % len(FIFO))
+        send_admin(bot, "Link postato, link in queue: %s" % len(FIFO))
         if len(FIFO) == 1:
             send_admin(bot, "1 Articolo rimane da pubblicare, aggiungine altri!")
 
     except IndexError:
         send_admin(bot, "Lista vuota!!")
+
+    except requests.exceptions.InvalidSchema:
+        send_admin(bot, "Link non valido")
 
     finally: 
         json.dump(FIFO, open('fifo.json', 'w'))
