@@ -57,25 +57,48 @@ def send_link(bot, job):
 
 def save_link(bot, up):
     try:
-        FIFO.append(up.message.text) 
+        link = up.message.text
+        r = requests.get(link)
+        if link in FIFO:
+            up.message.reply_text("Questo link esiste gia nella FIFO!")
+            return
+        FIFO.append(link)
+        up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
         with open('fifo.json', 'w') as ff:
             json.dump(FIFO, ff)
-    except:
-        up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
 
-    finally:
-        up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
+    except requests.exceptions.InvalidSchema:
+        up.message.reply_text("Link non valido, correggi e reinvia.")
+
+    except Exception as e:
+        up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+        raise e
 
 
 def queue(b,u):
     if u.message.chat_id in admin:
         text = "*In attesa di pubblicazione:* _{}_\n\n".format(len(FIFO))
-
+        counter = 0
         for item in FIFO:
-            text += item + "\n\n"
-
+            text += "{}. {} \n\n".format(str(counter), item)
+            counter += 1 
         u.message.reply_text(text, parse_mode='markdown')
 
+
+def remove(b, u):
+    num = int(u.message.text[4:]) 
+    try:
+        removed = FIFO.pop(num) 
+        u.message.reply_text("Elemento rimosso dalla lista")
+
+
+    except:
+        u.message.reply_text("Non ci sono elementi a questa posizione nella lista")
+
+    finally:
+        with open('fifo.json', 'w') as ff:
+            json.dump(FIFO, ff)
+        
 
 def send_admin(bot, message):
     for a in admin:
@@ -89,6 +112,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("q", queue))
+    dp.add_handler(CommandHandler("rm", remove))
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
     # All posting times 
