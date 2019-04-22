@@ -9,7 +9,7 @@ from lxml.html import fromstring
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
-admin = [135605474] # 311495487 
+admin = [135605474, 311495487] # 311495487 
 channel_id = "-1001480479440"
 FIFO = []
 try:
@@ -67,6 +67,16 @@ def save_link(bot, up):
         up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
 
 
+def queue(b,u):
+    if u.message.chat_id in admin:
+        text = "*In attesa di pubblicazione:* _{}_\n\n".format(len(FIFO))
+
+        for item in FIFO:
+            text += item + "\n\n"
+
+        u.message.reply_text(text, parse_mode='markdown')
+
+
 def send_admin(bot, message):
     for a in admin:
         bot.send_message(a, message)
@@ -78,6 +88,7 @@ def main():
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("q", queue))
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
     # All posting times 
