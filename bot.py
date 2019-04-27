@@ -1,7 +1,6 @@
 import requests
 import logging
 import json
-# import mechanize
 import telegram
 import time
 import datetime
@@ -10,12 +9,18 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 admin = [135605474, 311495487] # 311495487 
-channel_id = "-1001480479440"
+channel_id = -1001261875848
 FIFO = []
+
+logging.basicConfig(level=logging.INFO)
+logging.config.fileConfig('logging.ini')
+l = logging.getLogger(__name__)
+
+
 try:
     with open('fifo.json') as ff:
             FIFO = json.load(ff)
-            print("[INFO] Queue loaded correctly")
+            l.info("[INFO] Queue loaded correctly")
 
 except:
     print("[ERR] creating a new queue file")
@@ -36,9 +41,11 @@ def send_link(bot, job):
         tree = fromstring(r.content)
         title = tree.findtext('.//title')
 
+        if title == None:
+            title = ""
         # Formatting text
-        text = "{} \n\n {}".format(title, link)
-        bot.send_message(channel_id, text=text)
+        text = "*{}* \n {}".format(title, link)
+        bot.send_message(channel_id, text=text, parse_mode="markdown")
         
         # Monitoring
         send_admin(bot, "Link postato, link in queue: %s" % len(FIFO))
@@ -86,11 +93,10 @@ def queue(b,u):
 
 
 def remove(b, u):
-    num = int(u.message.text[4:]) 
     try:
+        num = int(u.message.text[4:]) 
         removed = FIFO.pop(num) 
         u.message.reply_text("Elemento rimosso dalla lista")
-
 
     except:
         u.message.reply_text("Non ci sono elementi a questa posizione nella lista")
@@ -115,13 +121,19 @@ def main():
     dp.add_handler(CommandHandler("rm", remove))
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
-    # All posting times 
-    updater.job_queue.run_daily(send_link, datetime.time(7, 30))
-    updater.job_queue.run_daily(send_link, datetime.time(8, 30))
-    updater.job_queue.run_daily(send_link, datetime.time(12, 30))
-    updater.job_queue.run_daily(send_link, datetime.time(13, 30))
-    updater.job_queue.run_daily(send_link, datetime.time(19, 30))
-    updater.job_queue.run_daily(send_link, datetime.time(20, 30))
+    # week days posting times 
+    updater.job_queue.run_daily(send_link, datetime.time(7, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(8, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(13, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(19, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(20, 30), days=(0,1,2,3,4))
+
+    # Weekend days
+    updater.job_queue.run_daily(send_link, datetime.time(9, 0), days=(5,6))
+    updater.job_queue.run_daily(send_link, datetime.time(15, 0), days=(5,6))
+    updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(5,6))
+
 
     updater.start_polling()
     updater.idle()
