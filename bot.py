@@ -12,18 +12,22 @@ admin = [135605474, 311495487] # 311495487
 channel_id = -1001261875848
 FIFO = []
 
-logging.basicConfig(level=logging.INFO)
-logging.config.fileConfig('logging.ini')
+logging.basicConfig(
+        filename='techstuff.log',
+        filemode='a',
+        level=logging.INFO,
+        format='%(asctime)s [%(levelname)s] %(name)s:  %(message)s')
+       
+
 l = logging.getLogger(__name__)
-
-
 try:
     with open('fifo.json') as ff:
-            FIFO = json.load(ff)
-            l.info("[INFO] Queue loaded correctly")
+        l.info("Opening Queue file")
+        FIFO = json.load(ff)
+        l.info("Queue loaded correctly")
 
 except:
-    print("[ERR] creating a new queue file")
+    l.error("Queue file not found, creating a new file")
     with open('fifo.json', 'w') as ff:
             json.dump(FIFO, ff)
 
@@ -34,17 +38,20 @@ def start(bot, update):
 
 def send_link(bot, job):
     try:
+        l.info("It's time to send the link, starting...")
         link = FIFO.pop(0)
-        print("[INFO] Getting link's title")
-        # title grabber with requests 
+        l.info("Getting link's title")
         r = requests.get(link)
         tree = fromstring(r.content)
         title = tree.findtext('.//title')
 
         if title == None:
             title = ""
+
+        l.info("Title Result: {}".format(title))
         # Formatting text
         text = "*{}* \n {}".format(title, link)
+        l.info("Sending message to channel")
         bot.send_message(channel_id, text=text, parse_mode="markdown")
         
         # Monitoring
@@ -52,11 +59,16 @@ def send_link(bot, job):
         if len(FIFO) == 1:
             send_admin(bot, "1 Articolo rimane da pubblicare, aggiungine altri!")
 
-    except IndexError:
+    except IndexError as e:
         send_admin(bot, "Lista vuota!!")
 
-    except requests.exceptions.InvalidSchema:
+    except requests.exceptions.InvalidSchema as e:
+        l.error('Exception Invalid Schema: {}'.format(e))
         send_admin(bot, "Link non valido")
+
+    except Exception as e:
+        l.error('General Exception: {}'.format(e))
+        send_admin(bot, str(e))
 
     finally: 
         json.dump(FIFO, open('fifo.json', 'w'))
@@ -64,22 +76,33 @@ def send_link(bot, job):
 
 def save_link(bot, up):
     try:
+        l.info("New message incoming, handled as link")
         link = up.message.text
         r = requests.get(link)
+
         if link in FIFO:
+            l.warning("Link gia presente nella coda FIFO")
             up.message.reply_text("Questo link esiste gia nella FIFO!")
             return
+        
+
+        l.info("Appending link on Queue")
         FIFO.append(link)
         up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
-        with open('fifo.json', 'w') as ff:
-            json.dump(FIFO, ff)
 
     except requests.exceptions.InvalidSchema:
         up.message.reply_text("Link non valido, correggi e reinvia.")
+        l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
 
     except Exception as e:
         up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+        l.error("Cannot save link, general error, link: {}".format(link), exec_inf=True)
         raise e
+
+    finally:
+        l.info("Saving Queue")
+        with open('fifo.json', 'w') as ff:
+            json.dump(FIFO, ff)
 
 
 def queue(b,u):
@@ -96,12 +119,15 @@ def remove(b, u):
     try:
         num = int(u.message.text[4:]) 
         removed = FIFO.pop(num) 
+        l.info("Removed link {} - {} - from Queue".format(num, removed))
         u.message.reply_text("Elemento rimosso dalla lista")
 
     except:
+        l.error("Failed removing from fifo")
         u.message.reply_text("Non ci sono elementi a questa posizione nella lista")
 
     finally:
+        l.info("Saving Queue")
         with open('fifo.json', 'w') as ff:
             json.dump(FIFO, ff)
         
@@ -112,18 +138,20 @@ def send_admin(bot, message):
 
 
 def main():
-    updater = Updater("673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY")
+    token ="673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY"
+    updater = Updater(token)
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("q", queue))
     dp.add_handler(CommandHandler("rm", remove))
+    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
     # week days posting times 
-    updater.job_queue.run_daily(send_link, datetime.time(7, 30), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(8, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(8, 00), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(9, 00), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(13, 30), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(19, 30), days=(0,1,2,3,4))
@@ -135,6 +163,9 @@ def main():
     updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(5,6))
 
 
+    
+    testo ="Starting the service: \nToken: {}\nQueue lenght: {}".format(token, len(FIFO))
+    l.info(testo)
     updater.start_polling()
     updater.idle()
 
