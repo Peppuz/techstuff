@@ -1,0 +1,480 @@
+2019-05-02 11:12:50,188 [INFO] __main__:  Opening Queue file
+2019-05-02 11:12:50,188 [INFO] __main__:  Queue loaded correctly
+2019-05-02 11:12:50,189 [INFO] __main__:  Starting the service: 
+Token: 673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY
+Queue lenght: 0
+2019-05-02 11:15:17,588 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62bd0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:17,589 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e74f8450>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:17,589 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e74f87d0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:17,590 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e74f8910>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:17,614 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:15:18,593 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:18,594 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e75135d0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:18,595 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513750>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:18,596 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513890>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:18,632 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:15:19,599 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:19,600 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e75136d0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:19,601 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513450>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:19,602 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513790>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:19,633 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:15:20,605 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62b90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:20,606 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513450>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:20,607 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513990>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:20,608 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513490>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:20,634 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:15:21,611 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:21,612 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513990>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:21,613 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513a50>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:21,614 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e75134d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:21,635 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:15:22,616 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62b90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:22,617 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513a50>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:22,618 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513b10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:22,618 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513890>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:22,636 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:15:23,621 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:23,622 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513b10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:23,623 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513bd0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:15:23,624 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513790>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:15:23,637 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:32,600 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62b90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:32,601 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513c90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:32,602 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ea50>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:32,603 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ebd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:32,619 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:33,605 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:33,606 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513bd0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:33,606 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ec50>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:33,607 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ecd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:33,620 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:34,609 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62b90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:34,610 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513b10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:34,611 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ea10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:34,612 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751eb90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:34,621 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:35,615 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:35,616 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7513790>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:35,616 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ee10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:35,618 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ed50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:35,622 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:36,620 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62b90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:36,621 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ea10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:36,622 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ec10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:36,623 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751eb50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:36,624 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:37,626 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62c10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:37,627 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ead0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:37,747 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ed10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:37,748 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ee90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:37,790 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 11:35:38,750 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e7d62b90>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:38,752 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ebd0>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:38,753 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e751ea10>: Failed to establish a new connection: [Errno -2] Name or service not known',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 11:35:38,754 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fc9e424f050>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+2019-05-02 11:35:38,758 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:08:39,784 [INFO] telegram.ext.updater:  Received signal 15 (SIGTERM), stopping...
+2019-05-02 12:12:27,179 [INFO] __main__:  Opening Queue file
+2019-05-02 12:12:27,204 [INFO] __main__:  Queue loaded correctly
+2019-05-02 12:12:27,220 [INFO] __main__:  Starting the service: 
+Token: 673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY
+Queue lenght: 0
+2019-05-02 12:30:00,001 [INFO] __main__:  It's time to send the link, starting...
+2019-05-02 12:32:10,240 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3b0211f10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:10,241 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7e90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:10,242 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9c8a50>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:10,243 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9c8d90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:10,256 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:11,246 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:11,247 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1ad0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:11,248 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1c10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:11,249 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1d10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:11,281 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:12,252 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:12,253 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1c10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:12,254 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1cd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:12,255 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1dd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:12,282 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:13,258 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:13,259 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1b90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:13,260 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1e10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:13,261 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1e90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:13,283 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:14,264 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:14,265 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1cd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:14,266 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1ed0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:14,267 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1f50>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:14,284 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:15,270 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:15,271 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1e10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:15,272 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1f90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:15,273 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1b10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:15,285 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:16,276 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:16,277 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1ed0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:16,278 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1b90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:16,279 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3ac707110>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:16,286 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:17,282 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:17,283 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1f90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:17,283 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1c10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:17,284 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3ac7071d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:17,287 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:32:18,286 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9a7fd0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:18,287 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3af9d1c10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:18,287 [WARNING] telegram.vendor.ptb_urllib3.urllib3.connectionpool:  Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3ac707090>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',)': /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates
+2019-05-02 12:32:18,288 [ERROR] telegram.ext.updater:  Error while getting Updates: urllib3 HTTPError HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.connection.VerifiedHTTPSConnection object at 0x7fa3ac707290>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution',))
+2019-05-02 12:32:18,288 [ERROR] telegram.ext.dispatcher:  No error handlers are registered, logging exception...
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 217, in start
+    update = self.update_queue.get(True, 1)
+  File "/usr/lib/python2.7/Queue.py", line 176, in get
+    raise Empty
+Empty
+2019-05-02 12:57:21,983 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 12:57:21,983 [INFO] __main__:  Saving Queue
+2019-05-02 12:57:21,984 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 96, in save_link
+    up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+AttributeError: 'NoneType' object has no attribute 'reply_text'
+2019-05-02 13:09:35,430 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 13:09:35,526 [INFO] __main__:  Appending link on Queue
+2019-05-02 13:09:35,700 [INFO] __main__:  Saving Queue
+2019-05-02 13:12:08,464 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 13:12:08,516 [INFO] __main__:  Saving Queue
+2019-05-02 13:12:08,517 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 97, in save_link
+    l.error("Cannot save link, general error, link: {}".format(link), exec_inf=True)
+  File "/usr/lib/python2.7/logging/__init__.py", line 1200, in error
+    self._log(ERROR, msg, args, **kwargs)
+TypeError: _log() got an unexpected keyword argument 'exec_inf'
+2019-05-02 13:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-02 13:30:00,000 [INFO] __main__:  Getting link's title
+2019-05-02 13:30:00,385 [ERROR] JobQueue:  An uncaught error was raised while executing job send_link
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/jobqueue.py", line 245, in tick
+    job.run(self.bot)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/jobqueue.py", line 372, in run
+    self.callback(bot, self)
+  File "bot.py", line 69, in send_link
+    send_admim(bot, str(e))
+NameError: global name 'send_admim' is not defined
+2019-05-02 14:55:05,054 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 14:55:05,618 [INFO] __main__:  Appending link on Queue
+2019-05-02 14:55:05,849 [INFO] __main__:  Saving Queue
+2019-05-02 14:56:41,796 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 14:56:43,163 [INFO] __main__:  Appending link on Queue
+2019-05-02 14:56:43,207 [INFO] __main__:  Saving Queue
+2019-05-02 15:03:23,644 [INFO] __main__:  Removed link 1 - http://bit.ly/2XVhW1c - from Queue
+2019-05-02 15:03:28,653 [ERROR] __main__:  Failed removing from fifo
+2019-05-02 15:03:28,864 [INFO] __main__:  Saving Queue
+2019-05-02 15:03:28,865 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 15:03:29,286 [INFO] __main__:  Appending link on Queue
+2019-05-02 15:03:29,346 [INFO] __main__:  Saving Queue
+2019-05-02 15:03:39,280 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 15:03:40,220 [INFO] __main__:  Appending link on Queue
+2019-05-02 15:03:40,275 [INFO] __main__:  Saving Queue
+2019-05-02 19:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-02 19:30:00,000 [INFO] __main__:  Getting link's title
+2019-05-02 19:30:00,634 [INFO] __main__:  Title Result: Tesla (TSLA) files for capital raise, Elon Musk to acquire $10 million in shares
+2019-05-02 19:30:00,634 [INFO] __main__:  Sending message to channel
+2019-05-02 20:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-02 20:30:00,001 [INFO] __main__:  Getting link's title
+2019-05-02 20:30:00,763 [ERROR] JobQueue:  An uncaught error was raised while executing job send_link
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/jobqueue.py", line 245, in tick
+    job.run(self.bot)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/jobqueue.py", line 372, in run
+    self.callback(bot, self)
+  File "bot.py", line 69, in send_link
+    send_admim(bot, str(e))
+NameError: global name 'send_admim' is not defined
+2019-05-02 21:22:40,522 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 21:22:40,523 [INFO] __main__:  Saving Queue
+2019-05-02 21:22:40,524 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 96, in save_link
+    up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+AttributeError: 'NoneType' object has no attribute 'reply_text'
+2019-05-02 21:22:46,742 [INFO] __main__:  Removed link 0 - http://bit.ly/2XVhW1c - from Queue
+2019-05-02 21:22:46,790 [INFO] __main__:  Saving Queue
+2019-05-02 23:07:02,428 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 23:07:03,944 [INFO] __main__:  Appending link on Queue
+2019-05-02 23:07:04,196 [INFO] __main__:  Saving Queue
+2019-05-02 23:08:13,234 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 23:08:14,461 [INFO] __main__:  Appending link on Queue
+2019-05-02 23:08:14,516 [INFO] __main__:  Saving Queue
+2019-05-02 23:08:33,652 [INFO] __main__:  Removed link 1 - https://tinyurl.com/y2fymy44 - from Queue
+2019-05-02 23:08:33,693 [INFO] __main__:  Saving Queue
+2019-05-02 23:08:54,116 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 23:08:54,870 [INFO] __main__:  Appending link on Queue
+2019-05-02 23:08:54,934 [INFO] __main__:  Saving Queue
+2019-05-02 23:09:05,755 [INFO] __main__:  Removed link 1 - https://www.federicomarchetti.com/wired-uk-2017 - from Queue
+2019-05-02 23:09:05,810 [INFO] __main__:  Saving Queue
+2019-05-02 23:09:56,827 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 23:09:58,092 [WARNING] __main__:  Link gia presente nella coda FIFO
+2019-05-02 23:09:58,179 [INFO] __main__:  Saving Queue
+2019-05-02 23:10:42,073 [ERROR] __main__:  Failed removing from fifo
+2019-05-02 23:10:42,115 [INFO] __main__:  Saving Queue
+2019-05-02 23:59:52,201 [INFO] __main__:  New message incoming, handled as link
+2019-05-02 23:59:53,000 [INFO] __main__:  Appending link on Queue
+2019-05-02 23:59:53,164 [INFO] __main__:  Saving Queue
+2019-05-03 08:00:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-03 08:00:00,000 [INFO] __main__:  Getting link's title
+2019-05-03 08:00:01,592 [INFO] __main__:  Title Result: WIRED 2017 | Federico Marchetti
+2019-05-03 08:00:01,592 [INFO] __main__:  Sending message to channel
+2019-05-03 09:00:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-03 09:00:00,001 [INFO] __main__:  Getting link's title
+2019-05-03 09:00:00,754 [ERROR] JobQueue:  An uncaught error was raised while executing job send_link
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/jobqueue.py", line 245, in tick
+    job.run(self.bot)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/jobqueue.py", line 372, in run
+    self.callback(bot, self)
+  File "bot.py", line 69, in send_link
+    send_admim(bot, str(e))
+NameError: global name 'send_admim' is not defined
+2019-05-03 10:49:36,003 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 10:49:37,250 [INFO] __main__:  Appending link on Queue
+2019-05-03 10:49:37,401 [INFO] __main__:  Saving Queue
+2019-05-03 11:12:01,834 [INFO] telegram.ext.updater:  Received signal 15 (SIGTERM), stopping...
+2019-05-03 11:12:09,161 [INFO] __main__:  Opening Queue file
+2019-05-03 11:12:09,161 [INFO] __main__:  Queue loaded correctly
+2019-05-03 11:12:09,162 [INFO] __main__:  Starting the service: 
+Token: 673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY
+Queue lenght: 1
+2019-05-03 11:12:09,308 [ERROR] telegram.ext.updater:  Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running (409)
+2019-05-03 11:15:58,888 [ERROR] __main__:  Failed removing from fifo
+2019-05-03 11:15:58,934 [INFO] __main__:  Saving Queue
+2019-05-03 12:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-03 12:30:00,001 [INFO] __main__:  Getting link's title
+2019-05-03 12:30:01,396 [ERROR] __main__:  General Exception: 'ascii' codec can't encode character u'\u200e' in position 0: ordinal not in range(128)
+2019-05-03 13:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-03 14:11:37,098 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 14:11:37,098 [INFO] __main__:  Saving Queue
+2019-05-03 14:11:37,099 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 98, in save_link
+    up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+AttributeError: 'NoneType' object has no attribute 'reply_text'
+2019-05-03 14:15:11,746 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 14:15:11,969 [INFO] __main__:  Saving Queue
+2019-05-03 14:15:11,970 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 99, in save_link
+    l.error("Cannot save link, general error, link: {}".format(link), exec_inf=True)
+  File "/usr/lib/python2.7/logging/__init__.py", line 1200, in error
+    self._log(ERROR, msg, args, **kwargs)
+TypeError: _log() got an unexpected keyword argument 'exec_inf'
+2019-05-03 15:23:45,933 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 15:23:45,934 [INFO] __main__:  Saving Queue
+2019-05-03 15:23:45,934 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 98, in save_link
+    up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+AttributeError: 'NoneType' object has no attribute 'reply_text'
+2019-05-03 16:09:59,107 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 16:17:34,324 [INFO] __main__:  Appending link on Queue
+2019-05-03 16:17:34,469 [INFO] __main__:  Saving Queue
+2019-05-03 16:18:17,676 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 16:18:18,026 [INFO] __main__:  Appending link on Queue
+2019-05-03 16:18:18,068 [INFO] __main__:  Saving Queue
+2019-05-03 16:18:22,071 [INFO] __main__:  Removed link 0 - https://tinyurl.com/y4vzd9dp - from Queue
+2019-05-03 16:18:22,116 [INFO] __main__:  Saving Queue
+2019-05-03 17:38:31,538 [INFO] __main__:  Removed link 0 - https://www.bloomberg.com/news/features/2019-05-02/satya-nadella-remade-microsoft-as-world-s-most-valuable-company - from Queue
+2019-05-03 17:38:31,753 [INFO] __main__:  Saving Queue
+2019-05-03 17:38:35,682 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 17:38:36,469 [INFO] __main__:  Appending link on Queue
+2019-05-03 17:38:36,531 [INFO] __main__:  Saving Queue
+2019-05-03 17:39:02,457 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 17:39:03,075 [INFO] __main__:  Appending link on Queue
+2019-05-03 17:39:03,120 [INFO] __main__:  Saving Queue
+2019-05-03 17:43:58,475 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 17:43:59,051 [INFO] __main__:  Appending link on Queue
+2019-05-03 17:43:59,150 [INFO] __main__:  Saving Queue
+2019-05-03 19:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-03 19:30:00,001 [INFO] __main__:  Getting link's title
+2019-05-03 19:30:00,984 [ERROR] __main__:  General Exception: 'ascii' codec can't encode character u'\u2013' in position 82: ordinal not in range(128)
+2019-05-03 19:55:41,055 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 19:55:41,056 [INFO] __main__:  Saving Queue
+2019-05-03 19:55:41,056 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 98, in save_link
+    up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+AttributeError: 'NoneType' object has no attribute 'reply_text'
+2019-05-03 20:30:00,000 [INFO] __main__:  It's time to send the link, starting...
+2019-05-03 20:30:00,001 [INFO] __main__:  Getting link's title
+2019-05-03 20:30:00,712 [ERROR] __main__:  General Exception: 'ascii' codec can't encode character u'\u2019' in position 61: ordinal not in range(128)
+2019-05-03 20:30:35,700 [INFO] __main__:  New message incoming, handled as link
+2019-05-03 20:30:35,701 [INFO] __main__:  Saving Queue
+2019-05-03 20:30:35,702 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/messagehandler.py", line 169, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File "bot.py", line 98, in save_link
+    up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
+AttributeError: 'NoneType' object has no attribute 'reply_text'

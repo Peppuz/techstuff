@@ -9,7 +9,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 admin = [135605474, 311495487] # 311495487 
-channel_id = -1001261875848
+channel_id = -1001480479440
 FIFO = []
 
 logging.basicConfig(
@@ -91,11 +91,9 @@ def save_link(bot, up):
         up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
 
     except requests.exceptions.InvalidSchema:
-        up.message.reply_text("Link non valido, correggi e reinvia.")
         l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
 
     except Exception as e:
-        up.message.reply_text("Something wrong saving the FIFO, but i don't know why..")
         l.error("Cannot save link, general error, link: {}".format(link), exec_inf=True)
         raise e
 
