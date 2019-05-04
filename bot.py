@@ -1,5 +1,6 @@
 import requests
 import logging
+import os
 import json
 import telegram
 import time
@@ -39,19 +40,7 @@ def start(bot, update):
 def send_link(bot, job):
     try:
         l.info("It's time to send the link, starting...")
-        link = FIFO.pop(0)
-        l.info("Getting link's title")
-        r = requests.get(link)
-        tree = fromstring(r.content)
-        title = tree.findtext('.//title')
-
-        if title == None:
-            title = ""
-
-        l.info("Title Result: {}".format(title))
-        # Formatting text
-        text = "*{}* \n {}".format(title, link)
-        l.info("Sending message to channel")
+        text = FIFO.pop(0)
         bot.send_message(channel_id, text=text, parse_mode="markdown")
         
         # Monitoring
@@ -60,14 +49,11 @@ def send_link(bot, job):
             send_admin(bot, "1 Articolo rimane da pubblicare, aggiungine altri!")
 
     except IndexError as e:
+        l.error('Exception Index Error: {}'.format(e), exec_inf=True)
         send_admin(bot, "Lista vuota!!")
 
-    except requests.exceptions.InvalidSchema as e:
-        l.error('Exception Invalid Schema: {}'.format(e))
-        send_admin(bot, "Link non valido")
-
     except Exception as e:
-        l.error('General Exception: {}'.format(e))
+        l.error('General Exception: {}'.format(e), exec_inf=True)
         send_admin(bot, str(e))
 
     finally: 
@@ -79,21 +65,25 @@ def save_link(bot, up):
         l.info("New message incoming, handled as link")
         link = up.message.text
         r = requests.get(link)
+        tree = fromstring(r.content)
+        title = tree.findtext('.//title')
+        text = "*{}* \n {}".format(title, link)
 
-        if link in FIFO:
+        if text in FIFO:
             l.warning("Link gia presente nella coda FIFO")
             up.message.reply_text("Questo link esiste gia nella FIFO!")
             return
-        
 
         l.info("Appending link on Queue")
-        FIFO.append(link)
+        FIFO.append(text)
         up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
 
     except requests.exceptions.InvalidSchema:
+        up.message.reply_text("Link errato o non schema invalido!")
         l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
 
     except Exception as e:
+        up.message.reply_text("General Error: {}".format(str(e)))
         l.error("Cannot save link, general error, link: {}".format(link), exec_inf=True)
         raise e
 
@@ -144,10 +134,10 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("q", queue))
     dp.add_handler(CommandHandler("rm", remove))
-    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
     # week days posting times 
+    updater.job_queue.run_daily(send_link, datetime.datetime.today())
     updater.job_queue.run_daily(send_link, datetime.time(8, 00), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(9, 00), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
@@ -161,9 +151,10 @@ def main():
     updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(5,6))
 
 
+    dp.add_handler(CommandHandler('p', send_link))
+    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     
-    testo ="Starting the service: \nToken: {}\nQueue lenght: {}".format(token, len(FIFO))
-    l.info(testo)
+
     updater.start_polling()
     updater.idle()
 
