@@ -125,6 +125,11 @@ def send_admin(bot, message):
         bot.send_message(a, message)
 
 
+
+def error(bot, message, err):
+    l.error("Update %s caused %s"%(udpate, err)
+
+
 def main():
     token ="673061913:AAFY6hTOYJDvT-Sp3ohJF5IkqW2oDFS4WuY"
     updater = Updater(token)
@@ -154,6 +159,7 @@ def main():
     dp.add_handler(CommandHandler('p', send_link))
     dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     
+    dp.add_handler(error) 
 
     updater.start_polling()
     updater.idle()
