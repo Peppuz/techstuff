@@ -43,7 +43,7 @@ def get_title(link):
         up.message.reply_text("Link errato o non schema invalido!")
         l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
 
-    except SocketError as e:
+    except IOError as e:
         send_admin(bot, str(e))
         l.error("SocketError:" , exec_inf=True)
         
@@ -57,7 +57,7 @@ def get_title(link):
     except Exception as e:
         up.message.reply_text(str(e))
         l.error("General error, link: {}".format(link), exec_inf=True)
-
+    l.info("Get info: {}".format(text)) 
     return text
 
 
@@ -107,7 +107,7 @@ def save_link(bot, up):
         up.message.reply_text("Link errato o non schema invalido!")
         l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
 
-    except SocketError as e:
+    except IOError as e:
         send_admin(bot, str(e))
         l.error("SocketError:" , exec_inf=True)
         
@@ -122,13 +122,14 @@ def save_link(bot, up):
 
     except Exception as e:
         up.message.reply_text(str(e))
-        l.error("General error, link: {}".format(link), exec_inf=True)
+        err = "General error, link: {}\n\n{}".format(link, str(e))
+        l.error(err, exec_inf=True)
+        bot.send_message(135605474, err)
 
     finally:
         l.info("Saving Queue")
         with open('fifo.json', 'w') as ff:
             json.dump(FIFO, ff)
-
 
 
 def queue(b,u):
