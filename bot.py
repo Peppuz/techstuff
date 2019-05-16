@@ -27,7 +27,7 @@ try:
         FIFO = json.load(ff)
         l.info("Queue loaded correctly")
 except:
-    l.error("Queue file not found, creating a new file")
+    l.exception("Queue file not found, creating a new file")
     with open('fifo.json', 'w') as ff:
             json.dump(FIFO, ff)
 
@@ -37,26 +37,32 @@ def get_title(link):
     try:
         r = requests.get(link)
         title = fromstring(r.content).findtext('.//title')
-        text = "*{}* \n {}".format(title, link) 
-    
+        title = "*"+title+"*"
+        
     except requests.exceptions.InvalidSchema:
         up.message.reply_text("Link errato o non schema invalido!")
-        l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
+        l.exception("Link not valid, Invalid Schema, link: {}".format(link))
 
     except IOError as e:
         send_admin(bot, str(e))
-        l.error("SocketError:" , exec_inf=True)
+        l.exception("SocketError:" )
         
     except UnicodeEncodeError as e: 
-        l.error("Unicode Error: re-encoding in utf-8")
-        title = title.encode('utf-8')
+        send_admin(bot, str(e))
+        l.exception("Unicode Error: re-encoding in utf-8")
+
         if text in FIFO:
             l.warning("Link gia presente nella coda FIFO")
             return False
 
+
     except Exception as e:
         up.message.reply_text(str(e))
-        l.error("General error, link: {}".format(link), exec_inf=True)
+        l.exception("General.exception, link: {}".format(link))
+
+    finally:
+        text = u'\n'.join((title, link)).encode('utf-8').strip()
+
     l.info("Get info: {}".format(text)) 
     return text
 
@@ -77,11 +83,11 @@ def send_link(bot, job):
             send_admin(bot, "1 Articolo rimane da pubblicare, aggiungine altri!")
 
     except IndexError as e:
-        l.error('Exception Index Error: {}'.format(e), exec_inf=True)
+        l.exception('Exception Index Error: {}'.format(e))
         send_admin(bot, "Lista vuota!!")
 
     except Exception as e:
-        l.error('General Exception: {}'.format(e), exec_inf=True)
+        l.exception('General Exception: {}'.format(e))
         send_admin(bot, str(e))
 
     finally: 
@@ -89,7 +95,7 @@ def send_link(bot, job):
 
 
 def save_link(bot, up):
-    title = None
+    text = None
     try:
         link = up.message.text
         l.info("New message incoming, handled as link {}".format(link))
@@ -105,25 +111,16 @@ def save_link(bot, up):
 
     except requests.exceptions.InvalidSchema:
         up.message.reply_text("Link errato o non schema invalido!")
-        l.error("Link not valid, Invalid Schema, link: {}".format(link), exec_inf=True)
+        l.exception("Link not valid, Invalid Schema, link: {}".format(link))
 
     except IOError as e:
         send_admin(bot, str(e))
-        l.error("SocketError:" , exec_inf=True)
+        l.exception("SocketError")
         
-    except UnicodeEncodeError as e: 
-        l.error("Unicode Error: re-encoding in utf-8")
-        title = title.encode('utf-8')
-        if text in FIFO:
-            l.warning("Link gia presente nella coda FIFO")
-            up.message.reply_text("Questo link esiste gia nella FIFO!")
-            return False
-        FIFO.append(title)
-
     except Exception as e:
         up.message.reply_text(str(e))
-        err = "General error, link: {}\n\n{}".format(link, str(e))
-        l.error(err, exec_inf=True)
+        err = "General.exception, link: {}\n\n{}".format(link, str(e))
+        l.exception(err)
         bot.send_message(135605474, err)
 
     finally:
@@ -137,7 +134,7 @@ def queue(b,u):
         text = "*In attesa di pubblicazione:* _{}_\n\n".format(len(FIFO))
         counter = 0
         for item in FIFO:
-            text += "{}. {} \n\n".format(str(counter), item)
+            text += u"{}. {} \n\n".format(str(counter), item)
             counter += 1 
         u.message.reply_text(text, parse_mode='markdown')
 
@@ -150,7 +147,7 @@ def remove(b, u):
         u.message.reply_text("Elemento rimosso dalla lista")
 
     except:
-        l.error("Failed removing from fifo")
+        l.exception("Failed removing from fifo")
         u.message.reply_text("Non ci sono elementi a questa posizione nella lista")
 
     finally:
@@ -179,12 +176,12 @@ def insert(bot, message):
             return False
 
         l.info("Appending link on Queue")
-        FIFO.append(text)
-        up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
+        FIFO.insert(index, text)
+        message.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
         
     except Exception as e:
-        up.message.reply_text(str(e))
-        l.error("General error, link: {}".format(link), exec_inf=True)
+        send_admin(bot, str(e))
+        l.exception("General.exception, link: {}".format(link))
 
     finally:
         l.info("Saving Queue")
@@ -196,7 +193,7 @@ def insert(bot, message):
 
 '''
 def error(bot, message, err):
-    l.error("Update %s caused %s"%(udpate, err))
+    l.exception("Update %s caused %s"%(udpate, err))
 '''
 
 
