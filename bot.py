@@ -129,14 +129,37 @@ def save_link(bot, up):
             json.dump(FIFO, ff)
 
 
+def move(b,u): 
+    text = u.message.text
+    text = text.split(' ')
+    command = text[0]
+    index = text[1]
+    testo = text[2:]
+   
+    if u.message.chat_id in admin:
+        try: 
+            item = FIFO[int(index)]
+            item = item.split('\n')
+            title  = u' '.join(testo)
+            title = u'*'+title+u'*'
+
+            new_item = u'\n'.join((title, item[1])).encode('utf-8').strip()
+            FIFO[int(index)] = new_item 
+            send_admin(b, "Element Renamed! check it /q")
+        except Exception as e:
+            l.exception('Rename Chat')
+            send_admin(b, "Element not Renamed!\nCheck logs ")
+        
+
 def queue(b,u):
     if u.message.chat_id in admin:
-        text = "*In attesa di pubblicazione:* _{}_\n\n".format(len(FIFO))
+        text = u"*In attesa di publicazione:* _{}_\n\n".format(len(FIFO)).encode('utf-8')
         counter = 0
         for item in FIFO:
-            text += u"{}. {} \n\n".format(str(counter), item)
+            text += u"{}. {} \n\n".format(str(counter), item).encode('utf-8')
             counter += 1 
-        u.message.reply_text(text, parse_mode='markdown')
+
+        b.send_message(u.message.chat_id, text, parse_mode='markdown')
 
 
 def remove(b, u):
@@ -206,6 +229,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("q", queue))
     dp.add_handler(CommandHandler("rm", remove))
+    dp.add_handler(CommandHandler("mv", move))
     dp.add_handler(CommandHandler("i", insert))
 
     dp.add_handler(MessageHandler(Filters.text, save_link))
