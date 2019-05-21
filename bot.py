@@ -149,17 +149,21 @@ def move(b,u):
         except Exception as e:
             l.exception('Rename Chat')
             send_admin(b, "Element not Renamed!\nCheck logs ")
+        finally:
+            l.info("Saving Queue")
+            with open('fifo.json', 'w') as ff:
+                json.dump(FIFO, ff)
         
 
 def queue(b,u):
     if u.message.chat_id in admin:
-        text = u"*In attesa di publicazione:* _{}_\n\n".format(len(FIFO)).encode('utf-8')
+        text = u"*In attesa di publicazione:* _{}_\n\n".format(len(FIFO))
         counter = 0
         for item in FIFO:
-            text += u"{}. {} \n\n".format(str(counter), item).encode('utf-8')
+            text += u"%s. %s \n\n" % (str(counter), item)
             counter += 1 
 
-        b.send_message(u.message.chat_id, text, parse_mode='markdown')
+        b.send_message(u.message.chat_id, text.encode('utf-8'), parse_mode='markdown')
 
 
 def remove(b, u):
@@ -186,8 +190,8 @@ def send_admin(bot, message):
 
 def insert(bot, message):
     data = message.message.text.split(' ')
-    index = data[1] 
-    link = data[2]
+    index = int(data[1])
+    link = int(data[2])
     
     try:
         l.info("Insert incoming, handled as link {}".format(link))
@@ -214,12 +218,6 @@ def insert(bot, message):
     return True 
 
 
-'''
-def error(bot, message, err):
-    l.exception("Update %s caused %s"%(udpate, err))
-'''
-
-
 def main():
     token ="673061913:AAHjaEPvX4M4x1NYE5MrXgsJ9eSRu8yQj3c"
     updater = Updater(token)
@@ -231,6 +229,9 @@ def main():
     dp.add_handler(CommandHandler("rm", remove))
     dp.add_handler(CommandHandler("mv", move))
     dp.add_handler(CommandHandler("i", insert))
+    dp.add_handler(CommandHandler('p', send_link))
+    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
+    dp.add_handler(CommandHandler("say", lambda bot, mess: send_admin(bot, mess.message.text[4:])))
 
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
@@ -238,6 +239,8 @@ def main():
     # UNCOMMENT WHEN DEBUGGING
     #updater.job_queue.run_daily(send_link, datetime.datetime.today())
     #channel_id = -1001480479440
+    dp.add_handler(CommandHandler('p', send_link))
+    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     
     # week days posting times 
     updater.job_queue.run_daily(send_link, datetime.time(8, 00), days=(0,1,2,3,4))
@@ -253,8 +256,6 @@ def main():
     updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(5,6))
 
 
-    dp.add_handler(CommandHandler('p', send_link))
-    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     
     # Handle Errors
     # dp.add_handler(error) 
