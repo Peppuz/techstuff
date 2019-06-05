@@ -185,7 +185,7 @@ def remove(b, u):
 
 def send_admin(bot, message):
     for a in admin:
-        bot.send_message(a, message)
+        bot.send_message(a, message, parse_mode='markdown')
 
 
 def insert(bot, message):
@@ -196,7 +196,7 @@ def insert(bot, message):
     try:
         l.info("Insert incoming, handled as link {}".format(link))
         text = get_title(link)
-        l.info("Text formatted: {}".format(text) )
+        l.info("Text formatted: {}".format(text))
         if text in FIFO:
             l.warning("Link gia presente nella coda FIFO")
             up.message.reply_text("Questo link esiste gia nella FIFO!")
@@ -216,6 +216,10 @@ def insert(bot, message):
             json.dump(FIFO, ff)
 
     return True 
+
+
+def weekend_reminder(b, u): 
+    send_admin("*IT'S WEEKEND BITCH*\nOrari: 9 - 15 - 21")
 
 
 def main():
@@ -254,6 +258,8 @@ def main():
     updater.job_queue.run_daily(send_link, datetime.time(9, 0), days=(5,6))
     updater.job_queue.run_daily(send_link, datetime.time(15, 0), days=(5,6))
     updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(5,6))
+    # Reminder Weekend
+    updater.job_queue.run_daily(weekend_reminder, datetime.time(9, 0), days=(5,6))
 
 
     
