@@ -1,0 +1,9 @@
+2019-06-14 01:26:43,766 [ERROR] telegram.ext.dispatcher:  An uncaught error was raised while processing the update   
+Traceback (most recent call last):
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/dispatcher.py", line 279, in process_update     
+    handler.handle_update(update, self)
+  File "/home/peppuz/.local/lib/python2.7/site-packages/telegram/ext/commandhandler.py", line 173, in handle_update  
+    return self.callback(dispatcher.bot, update, **optional_args)                                                    
+  File "bot.py", line 163, in queue
+    text += u"%s. %s \n\n" % (str(counter), item)
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 49: ordinal not in range(128)     
