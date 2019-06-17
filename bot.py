@@ -161,7 +161,7 @@ def queue(b,u):
         text = u"*In attesa di publicazione:* _{}_\n\n".format(len(FIFO))
         counter = 0
         for item in FIFO:
-            text += u"{}. {} \n\n".format(str(counter).encode('utf-8'), item)
+            text += u"{}. {} \n\n".format(counter, item)
             counter += 1 
 
         b.send_message(u.message.chat_id, text.encode('utf-8'), parse_mode='markdown')
