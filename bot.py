@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import requests
 import logging
 import os
@@ -63,7 +64,7 @@ def get_title(link):
     finally:
         text = u'\n'.join((title, link)).encode('utf-8').strip()
 
-    l.info("Get info: {}".format(text)) 
+    l.info(u"Get info: {}".format( title))
     return text
 
 
@@ -160,7 +161,7 @@ def queue(b,u):
         text = u"*In attesa di publicazione:* _{}_\n\n".format(len(FIFO))
         counter = 0
         for item in FIFO:
-            text += u"%s. %s \n\n" % (str(counter), item)
+            text += u"{}. {} \n\n".format(str(counter).encode('utf-8'), item)
             counter += 1 
 
         b.send_message(u.message.chat_id, text.encode('utf-8'), parse_mode='markdown')
@@ -170,7 +171,11 @@ def remove(b, u):
     try:
         num = int(u.message.text[4:]) 
         removed = FIFO.pop(num) 
-        l.info("Removed link {} - {} - from Queue".format(num, removed))
+        try:
+            l.info("Removed link {} - {} - from Queue".format(num, removed))
+        except:
+            l.info("Removed link from Queue")
+
         u.message.reply_text("Elemento rimosso dalla lista")
 
     except:
@@ -190,13 +195,13 @@ def send_admin(bot, message):
 
 def insert(bot, message):
     data = message.message.text.split(' ')
-    index = int(data[1])
-    link = int(data[2])
+    index = int(str(data[1]))
+    link = str(data[2])
     
     try:
         l.info("Insert incoming, handled as link {}".format(link))
         text = get_title(link)
-        l.info("Text formatted: {}".format(text))
+        # l.info(str(u"Text formatted: {}".format(text)))
         if text in FIFO:
             l.warning("Link gia presente nella coda FIFO")
             up.message.reply_text("Questo link esiste gia nella FIFO!")
@@ -204,7 +209,7 @@ def insert(bot, message):
 
         l.info("Appending link on Queue")
         FIFO.insert(index, text)
-        message.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
+        message.message.reply_text("New element appended on queue at position {}, {} in list".format(index, len(FIFO)))
         
     except Exception as e:
         send_admin(bot, str(e))
@@ -252,7 +257,7 @@ def main():
     updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(13, 30), days=(0,1,2,3,4))
     updater.job_queue.run_daily(send_link, datetime.time(19, 30), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(20, 30), days=(0,1,2,3,4))
+    updater.job_queue.run_daily(send_link, datetime.time(20, 00), days=(0,1,2,3,4))
 
     # Weekend days
     updater.job_queue.run_daily(send_link, datetime.time(9, 0), days=(5,6))
