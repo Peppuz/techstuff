@@ -32,12 +32,20 @@ except:
             json.dump(FIFO, ff)
 
 
-def get_title(link):
+def get_title(bot, link):
+    """ Given a single link gets the title 
+        and returns the text in markdown
+    """
     text = None
     try:
         r = requests.get(link)
         title = fromstring(r.content).findtext('.//title')
-        title = "*"+title+"*"
+        title = title.split('-') 
+        if len(title) == 1:
+            title = title[0].split('|')
+        source = title[-1]
+        text = u"*{}* - {}".format(title[0], source)
+        print(text)
         
     except requests.exceptions.InvalidSchema:
         up.message.reply_text("Link errato o non schema invalido!")
@@ -60,8 +68,6 @@ def get_title(link):
         up.message.reply_text(str(e))
         l.exception("General.exception, link: {}".format(link))
 
-    finally:
-        text = u'\n'.join((title, link)).encode('utf-8').strip()
 
     l.info("Get info: {}".format(text)) 
     return text
@@ -99,7 +105,10 @@ def save_link(bot, up):
     try:
         link = up.message.text
         l.info("New message incoming, handled as link {}".format(link))
-        text = get_title(link)
+        text = get_title(bot, link)
+        if text is None:
+            up.message.reply_text("Pubblicalo manualmente gay frocio di merda, ")
+            return False
         if text in FIFO:
             l.warning("Link gia presente nella coda FIFO")
             up.message.reply_text("Questo link esiste gia nella FIFO!")
@@ -116,9 +125,8 @@ def save_link(bot, up):
     except IOError as e:
         send_admin(bot, str(e))
         l.exception("SocketError")
-        
+
     except Exception as e:
-        up.message.reply_text(str(e))
         err = "General.exception, link: {}\n\n{}".format(link, str(e))
         l.exception(err)
         bot.send_message(135605474, err)
@@ -139,16 +147,16 @@ def move(b,u):
     if u.message.chat_id in admin:
         try: 
             item = FIFO[int(index)]
-            item = item.split('\n')
+            i = item.split('\n')
             title  = u' '.join(testo)
-            title = u'*'+title+u'*'
 
-            new_item = u'\n'.join((title, item[1])).encode('utf-8').strip()
+            print(title, i) 
+            new_item = u'\n'.join((title, i[1])).encode('utf-8').strip()
             FIFO[int(index)] = new_item 
             send_admin(b, "Element Renamed! check it /q")
         except Exception as e:
             l.exception('Rename Chat')
-            send_admin(b, "Element not Renamed!\nCheck logs ")
+            send_admin(b, "Element not Renamed!\nERROR:\'n{}".format(str(e)))
         finally:
             l.info("Saving Queue")
             with open('fifo.json', 'w') as ff:
@@ -243,18 +251,17 @@ def main():
     dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
     
     # week days posting times 
-    updater.job_queue.run_daily(send_link, datetime.time(8, 00), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(9, 00), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(13, 30), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(19, 30), days=(0,1,2,3,4))
-    updater.job_queue.run_daily(send_link, datetime.time(20, 30), days=(0,1,2,3,4))
+    #updater.job_queue.run_daily(send_link, datetime.time(8, 00), days=(0,1,2,3,4))
+    #updater.job_queue.run_daily(send_link, datetime.time(9, 00), days=(0,1,2,3,4))
+    #updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
+    #updater.job_queue.run_daily(send_link, datetime.time(13, 30), days=(0,1,2,3,4))
+    #updater.job_queue.run_daily(send_link, datetime.time(19, 30), days=(0,1,2,3,4))
+    #updater.job_queue.run_daily(send_link, datetime.time(20, 30), days=(0,1,2,3,4))
 
     # Weekend days
-    updater.job_queue.run_daily(send_link, datetime.time(9, 0), days=(5,6))
-    updater.job_queue.run_daily(send_link, datetime.time(15, 0), days=(5,6))
-    updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(5,6))
-
+    updater.job_queue.run_daily(send_link, datetime.time(9, 0), days=(0,1,2,3,4,5,6))
+    updater.job_queue.run_daily(send_link, datetime.time(15, 0), days=(0,1,2,3,4,5,6))
+    updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(0,1,2,3,4,5,6))
 
     
     # Handle Errors

@@ -1,4 +1,3 @@
 python-telegram-bot
 html5lib
 requests
-fromstring
