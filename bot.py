@@ -1,18 +1,11 @@
-import requests
-import logging
-import os
-import json
-import telegram
-import time
-import datetime
+import requests, logging, os, json, telegram, time, datetime
+from airtable import airtable
 from lxml.html import fromstring
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-
 admin = [135605474, 311495487] # 311495487 
 channel_id = -1001261875848
-FIFO = []
-PRODUCTION = False
+at = airtable.Airtable('app0H4qDbdjTXfmfB', 'keyom1R0JvwYZgXju')
 
 logging.basicConfig(
         filename='techstuff.log',
@@ -21,20 +14,10 @@ logging.basicConfig(
         format='%(asctime)s [%(levelname)s] %(name)s:  %(message)s')
 l = logging.getLogger(__name__)
 
-try:
-    with open('fifo.json') as ff:
-        l.info("Opening Queue file")
-        FIFO = json.load(ff)
-        l.info("Queue loaded correctly")
-except:
-    l.exception("Queue file not found, creating a new file")
-    with open('fifo.json', 'w') as ff:
-            json.dump(FIFO, ff)
-
 
 def get_title(bot, link):
     """ Given a single link gets the title 
-        and returns the text in markdown
+        and returns the title and source in markdown (NOT THE LINK)
     """
     text = None
     try:
@@ -48,7 +31,7 @@ def get_title(bot, link):
         print(text)
         
     except requests.exceptions.InvalidSchema:
-        up.message.reply_text("Link errato o non schema invalido!")
+        send_admin(bot, "Link errato o non schema invalido!")
         l.exception("Link not valid, Invalid Schema, link: {}".format(link))
 
     except IOError as e:
@@ -63,9 +46,8 @@ def get_title(bot, link):
             l.warning("Link gia presente nella coda FIFO")
             return False
 
-
     except Exception as e:
-        up.message.reply_text(str(e))
+        send_admin(bot, str(e))
         l.exception("General.exception, link: {}".format(link))
 
 
@@ -78,48 +60,50 @@ def start(bot, update):
 
 
 def send_link(bot, job):
+    """ Gets from airtable the first element in position, publishes and removes the record """
     try:
         l.info("It's time to send the link, starting...")
-        text = FIFO.pop(0)
+        post = at.get('techstuff')['records'][0]
+        
+        text = "{} \n{}".format(post['fields']['Title'],post['fields']['Link'])
         bot.send_message(channel_id, text=text, parse_mode="markdown")
         
-        # Monitoring
-        send_admin(bot, "Link postato, link in queue: %s" % len(FIFO))
-        if len(FIFO) == 1:
-            send_admin(bot, "1 Articolo rimane da pubblicare, aggiungine altri!")
-
-    except IndexError as e:
-        l.exception('Exception Index Error: {}'.format(e))
-        send_admin(bot, "Lista vuota!!")
+        ll= len(at.get('techstuff')['records'])
+        send_admin(bot, "Link postato, link in queue: %s" % ll)
+        at.delete('techstuff', post['id'])
 
     except Exception as e:
         l.exception('General Exception: {}'.format(e))
         send_admin(bot, str(e))
 
-    finally: 
-        json.dump(FIFO, open('fifo.json', 'w'))
-
 
 def save_link(bot, up):
+    """ Incoming Links get saved to airtable, after beign processed. """ 
     text = None
+    al = at.get('techstuff')
+    links = []
+    for a in al['records']:
+        links.append(a['fields']['Link'])
+
     try:
         link = up.message.text
         l.info("New message incoming, handled as link {}".format(link))
         text = get_title(bot, link)
         if text is None:
-            up.message.reply_text("Pubblicalo manualmente gay frocio di merda, ")
+            send_admin(bot, "E' stato rilevato un errore nel titolo del Link. text == None")
+            l.warning("E' stato rilevato un errore nel titolo del Link. text == None")
             return False
-        if text in FIFO:
+        if link in links:
             l.warning("Link gia presente nella coda FIFO")
-            up.message.reply_text("Questo link esiste gia nella FIFO!")
+            send_admin(bot, "Questo link esiste gia nella FIFO!")
             return False
 
         l.info("Appending link on Queue")
-        FIFO.append(text)
+        at.create('techstuff', {"Title":text, "Link":link })
         up.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
 
     except requests.exceptions.InvalidSchema:
-        up.message.reply_text("Link errato o non schema invalido!")
+        send_admin(bot, "Link errato o non schema invalido!")
         l.exception("Link not valid, Invalid Schema, link: {}".format(link))
 
     except IOError as e:
@@ -131,13 +115,13 @@ def save_link(bot, up):
         l.exception(err)
         bot.send_message(135605474, err)
 
-    finally:
-        l.info("Saving Queue")
-        with open('fifo.json', 'w') as ff:
-            json.dump(FIFO, ff)
-
 
 def move(b,u): 
+    """ Rename or move to Position a Record 
+        ES. /mv 2 Text chat shish 
+    """ 
+    return
+
     text = u.message.text
     text = text.split(' ')
     command = text[0]
@@ -164,32 +148,31 @@ def move(b,u):
         
 
 def queue(b,u):
+    ''' Sends the whole queue '''
     if u.message.chat_id in admin:
-        text = u"*In attesa di publicazione:* _{}_\n\n".format(len(FIFO))
-        counter = 0
-        for item in FIFO:
-            text += u"%s. %s \n\n" % (str(counter), item)
-            counter += 1 
-
+        coddio = at.get('techstuff')['records']
+        text = u"*In attesa di publicazione:* _{}_\n\n".format(len(coddio))
+        for item in at.get('techstuff')['records']:
+            text += u"%s. %s \n\n" % (item['fields']['Index'], item['fields']['Title'])
         b.send_message(u.message.chat_id, text.encode('utf-8'), parse_mode='markdown')
 
 
 def remove(b, u):
+    ''' Remove element from airtable
+        ES. /rm 4
+    '''
     try:
         num = int(u.message.text[4:]) 
-        removed = FIFO.pop(num) 
-        l.info("Removed link {} - {} - from Queue".format(num, removed))
+        record = at.get('techstuff', filter_by_formula="Index = '{}'".format(num))
+        u.message.reply_text("Elemento {}".format(record[0]['fields']['Title']))
+        at.delete('techstuff', record['records'][0]['id'])
+        l.info("Removed link {} - from Queue".format(num))
         u.message.reply_text("Elemento rimosso dalla lista")
 
     except:
         l.exception("Failed removing from fifo")
         u.message.reply_text("Non ci sono elementi a questa posizione nella lista")
 
-    finally:
-        l.info("Saving Queue")
-        with open('fifo.json', 'w') as ff:
-            json.dump(FIFO, ff)
-        
 
 def send_admin(bot, message):
     for a in admin:
@@ -197,22 +180,27 @@ def send_admin(bot, message):
 
 
 def insert(bot, message):
+    """ TODO """
+    return 
+
     data = message.message.text.split(' ')
     index = int(data[1])
     link = int(data[2])
     
     try:
         l.info("Insert incoming, handled as link {}".format(link))
-        text = get_title(link)
+        text = get_title(bot, link)
         l.info("Text formatted: {}".format(text) )
-        if text in FIFO:
+
+        if link in [a['fields']['Link'] for a in at.get('techstuff')['records']]:
             l.warning("Link gia presente nella coda FIFO")
-            up.message.reply_text("Questo link esiste gia nella FIFO!")
+            send_admin(bot, "Questo link esiste gia nella FIFO!")
             return False
 
         l.info("Appending link on Queue")
-        FIFO.insert(index, text)
-        message.message.reply_text("New element appended on queue, {} in list".format(len(FIFO)))
+        at.create('techstuff', {"Link": link, "Title":text, "Index":index})
+        l.info("Link on Queue added")
+        send_admin(bot, "New element appended on queue /q")
         
     except Exception as e:
         send_admin(bot, str(e))
@@ -228,7 +216,7 @@ def insert(bot, message):
 
 def main():
     token ="673061913:AAHjaEPvX4M4x1NYE5MrXgsJ9eSRu8yQj3c"
-    updater = Updater(token)
+    updater = Updater(token, use_context=True)
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
@@ -243,29 +231,10 @@ def main():
 
     dp.add_handler(MessageHandler(Filters.text, save_link))
     
-    
-    # UNCOMMENT WHEN DEBUGGING
-    #updater.job_queue.run_daily(send_link, datetime.datetime.today())
-    #channel_id = -1001480479440
-    dp.add_handler(CommandHandler('p', send_link))
-    dp.add_handler(CommandHandler("on", lambda bot, mess: send_admin(bot, "Bot up and running...")))
-    
-    # week days posting times 
-    #updater.job_queue.run_daily(send_link, datetime.time(8, 00), days=(0,1,2,3,4))
-    #updater.job_queue.run_daily(send_link, datetime.time(9, 00), days=(0,1,2,3,4))
-    #updater.job_queue.run_daily(send_link, datetime.time(12, 30), days=(0,1,2,3,4))
-    #updater.job_queue.run_daily(send_link, datetime.time(13, 30), days=(0,1,2,3,4))
-    #updater.job_queue.run_daily(send_link, datetime.time(19, 30), days=(0,1,2,3,4))
-    #updater.job_queue.run_daily(send_link, datetime.time(20, 30), days=(0,1,2,3,4))
-
-    # Weekend days
+    # days
     updater.job_queue.run_daily(send_link, datetime.time(9, 0), days=(0,1,2,3,4,5,6))
     updater.job_queue.run_daily(send_link, datetime.time(15, 0), days=(0,1,2,3,4,5,6))
     updater.job_queue.run_daily(send_link, datetime.time(21, 0), days=(0,1,2,3,4,5,6))
-
-    
-    # Handle Errors
-    # dp.add_handler(error) 
 
     updater.start_polling()
     updater.idle()
